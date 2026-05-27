@@ -29,6 +29,7 @@ export const BaseNode = ({ id, data, config, dynamicInputs = [] }) => {
   const allInputs = [...staticInputs, ...dynamicInputs];
   const { outputs = [] } = config;
   const inputs = allInputs;
+  const Children = config.children;
 
   const getHandlePosition = (handleIndex, totalHandles) => {
     if (totalHandles === 1) return 50;
@@ -101,11 +102,13 @@ export const BaseNode = ({ id, data, config, dynamicInputs = [] }) => {
       </div>
 
       {/* Custom Content (if provided) */}
-      {config.children && (
+      {Children && (
         <div style={{ marginBottom: `${nodeTheme.spacing.xs}px` }}>
-          {typeof config.children === 'function'
-            ? config.children({ fields, handleFieldChange })
-            : config.children}
+          {typeof Children === 'function' ? (
+            <Children fields={fields} handleFieldChange={handleFieldChange} />
+          ) : (
+            Children
+          )}
         </div>
       )}
 
