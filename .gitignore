@@ -1,4 +1,4 @@
-# Dependencies
+git push -u origin main# Dependencies
 node_modules/
 package-lock.json
 npm-debug.log

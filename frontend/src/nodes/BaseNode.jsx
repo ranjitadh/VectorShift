@@ -6,7 +6,7 @@ import { Handle, Position } from 'reactflow';
 import { useStore } from '../store';
 import { nodeTheme, getNodeColor } from '../theme/nodeTheme';
 
-export const BaseNode = ({ id, data, config }) => {
+export const BaseNode = ({ id, data, config, dynamicInputs = [] }) => {
   const nodeType = data?.nodeType || 'text';
   const nodeColor = getNodeColor(nodeType);
   const updateNodeField = useStore((state) => state.updateNodeField);
@@ -24,7 +24,11 @@ export const BaseNode = ({ id, data, config }) => {
   };
 
   const width = config.width || nodeTheme.sizes.defaultWidth;
-  const { inputs = [], outputs = [] } = config;
+  const staticInputs = config.inputs || [];
+  // Combine static inputs with dynamic inputs (e.g., from variable detection)
+  const allInputs = [...staticInputs, ...dynamicInputs];
+  const { outputs = [] } = config;
+  const inputs = allInputs;
 
   const getHandlePosition = (handleIndex, totalHandles) => {
     if (totalHandles === 1) return 50;
@@ -105,8 +109,8 @@ export const BaseNode = ({ id, data, config }) => {
         </div>
       )}
 
-      {/* Fields */}
-      {config.fields && config.fields.length > 0 && (
+      {/* Fields - skip if custom children is present */}
+      {!config.children && config.fields && config.fields.length > 0 && (
         <div
           style={{
             display: 'flex',
