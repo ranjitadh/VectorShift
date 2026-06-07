@@ -5,9 +5,178 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc;
+  color: #0f172a;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100vh;
+}
+
+/* React Flow light styling */
+.react-flow__controls {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.react-flow__controls-button {
+  background: #ffffff;
+  color: #475569;
+  border-bottom: 1px solid #f1f5f9;
+  fill: currentColor;
+}
+
+.react-flow__controls-button:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.react-flow__minimap {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(59, 130, 246, 0.06);
+}
+
+/* Animated Dash Connections for Connection Line */
+.react-flow__connection-path {
+  stroke: #3b82f6 !important;
+  stroke-width: 2.5px !important;
+  stroke-dasharray: 6 !important;
+  animation: connectionDash 0.8s linear infinite !important;
+}
+
+@keyframes connectionDash {
+  from {
+    stroke-dashoffset: 12;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Polished React Flow Edge Styling */
+.react-flow__edge-path {
+  stroke: #cbd5e1 !important;
+  stroke-width: 2px !important;
+  transition: stroke 0.2s, stroke-width 0.2s;
+}
+
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke: #8b5cf6 !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #3b82f6 !important;
+  stroke-width: 3px !important;
+}
+
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: #94a3b8 !important;
+  stroke-width: 2.5px !important;
+}
+
+/* Node Selection Glowing Outline */
+.react-flow__node {
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out !important;
+}
+
+.react-flow__node:hover {
+  z-index: 1000 !important;
+}
+
+.react-flow__node.selected > div {
+  outline: none;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 1px #3b82f6, 0 0 20px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Circular Custom Handles & Hover Effects */
+.custom-node-handle {
+  border-radius: 50% !important;
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.15s ease, background-color 0.15s ease !important;
+}
+
+.custom-node-handle:hover {
+  transform: scale(1.4) !important;
+  box-shadow: 0 0 10px currentColor !important;
+  cursor: crosshair !important;
+}
+
+/* Modern Input transition styles */
+.custom-node-input {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
+  outline: none;
+}
+
+.custom-node-input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15) !important;
+  background-color: #ffffff !important;
+}
+
+.custom-node-input:hover:not(:focus) {
+  border-color: #94a3b8 !important;
+}
+
+/* Draggable toolbar nodes modern hover states */
+.toolbar-draggable-node {
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease !important;
+}
+
+.toolbar-draggable-node:hover {
+  background-color: #f4f4f5 !important;
+  border-color: #d4d4d8 !important;
+  color: #09090b !important;
+}
+
+/* Submit and Modal Button Animations */
+.custom-submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3) !important;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+}
+
+.custom-submit-btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2) !important;
+}
+
+.custom-modal-close-btn:hover {
+  background-color: #27272a !important;
+  color: #ffffff !important;
+}
+
+.custom-modal-close-btn:active {
+  transform: scale(0.98);
+}
+
+.custom-node-delete-btn:hover {
+  background-color: #fef2f2 !important;
+  color: #ef4444 !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

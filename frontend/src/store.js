@@ -11,6 +11,11 @@ import {
 export const useStore = create((set, get) => ({
     nodes: [],
     edges: [],
+    nodeIDs: {},
+    modalData: null,
+    isModalOpen: false,
+    setModalData: (modalData) => set({ modalData }),
+    setIsModalOpen: (isModalOpen) => set({ isModalOpen }),
     getNodeID: (type) => {
         const newIDs = {...get().nodeIDs};
         if (newIDs[type] === undefined) {
@@ -44,11 +49,16 @@ export const useStore = create((set, get) => ({
       set({
         nodes: get().nodes.map((node) => {
           if (node.id === nodeId) {
-            node.data = { ...node.data, [fieldName]: fieldValue };
+            return { ...node, data: { ...node.data, [fieldName]: fieldValue } };
           }
-  
           return node;
         }),
+      });
+    },
+    deleteNode: (nodeId) => {
+      set({
+        nodes: get().nodes.filter((node) => node.id !== nodeId),
+        edges: get().edges.filter((edge) => edge.source !== nodeId && edge.target !== nodeId),
       });
     },
   }));

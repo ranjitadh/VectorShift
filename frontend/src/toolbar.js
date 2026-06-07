@@ -3,39 +3,101 @@
 import { DraggableNode } from './draggableNode';
 
 export const PipelineToolbar = () => {
-
     return (
         <div style={{
-          padding: '12px 16px',
-          backgroundColor: '#0f172a',
-          borderBottom: '1px solid #334155',
-          minHeight: '120px',
+          width: '280px',
+          height: '100%',
+          backgroundColor: '#ffffff',
+          borderRight: '1.5px solid #e4e4e7',
           display: 'flex',
           flexDirection: 'column',
-          gap: '10px',
+          padding: '24px 16px',
+          gap: '24px',
+          boxSizing: 'border-box',
+          overflowY: 'auto',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         }}>
-            <div style={{
-              fontSize: '12px',
-              color: '#64748b',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-            }}>
-              Drag nodes to canvas
+            {/* Title / Description */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div style={{
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#09090b',
+              }}>
+                Node Components
+              </div>
+              <div style={{
+                fontSize: '11px',
+                color: '#71717a',
+              }}>
+                Drag and drop nodes to assemble your AI pipeline.
+              </div>
             </div>
 
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '8px',
-            }}>
-                <DraggableNode type='customInput' label='Input' />
-                <DraggableNode type='customOutput' label='Output' />
-                <DraggableNode type='llm' label='LLM' />
-                <DraggableNode type='text' label='Text' />
-                <DraggableNode type='api' label='API' />
-                <DraggableNode type='database' label='Database' />
-                <DraggableNode type='delay' label='Delay' />
-                <DraggableNode type='filter' label='Filter' />
-                <DraggableNode type='email' label='Email' />
+            {/* Category: Core Nodes */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{
+                fontSize: '10px',
+                fontWeight: '700',
+                color: '#a1a1aa',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}>
+                Core
+              </div>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '8px',
+              }}>
+                  <DraggableNode type='customInput' label='Input' />
+                  <DraggableNode type='customOutput' label='Output' />
+                  <DraggableNode type='text' label='Text' />
+              </div>
+            </div>
+
+            {/* Category: AI & Logic */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{
+                fontSize: '10px',
+                fontWeight: '700',
+                color: '#a1a1aa',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}>
+                AI & Logic
+              </div>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '8px',
+              }}>
+                  <DraggableNode type='llm' label='LLM' />
+                  <DraggableNode type='filter' label='Filter' />
+                  <DraggableNode type='delay' label='Delay' />
+              </div>
+            </div>
+
+            {/* Category: Integrations */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{
+                fontSize: '10px',
+                fontWeight: '700',
+                color: '#a1a1aa',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}>
+                Integrations
+              </div>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '8px',
+              }}>
+                  <DraggableNode type='api' label='API Call' />
+                  <DraggableNode type='database' label='Database' />
+                  <DraggableNode type='email' label='Email' />
+              </div>
             </div>
         </div>
     );
