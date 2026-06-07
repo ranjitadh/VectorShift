@@ -92,7 +92,7 @@ export const PipelineUI = () => {
             addNode(newNode);
           }
         },
-        [reactFlowInstance]
+        [reactFlowInstance, getNodeID, addNode]
     );
 
     const onDragOver = useCallback((event) => {
@@ -102,10 +102,10 @@ export const PipelineUI = () => {
 
     return (
         <>
-        <div ref={reactFlowWrapper} style={{
-          width: '100vw',
-          height: 'calc(100vh - 170px)',
-          backgroundColor: '#0a0e18',
+         <div ref={reactFlowWrapper} style={{
+          width: '100%',
+          height: '100%',
+          backgroundColor: '#fafafa',
         }}>
             <ReactFlow
                 nodes={nodes}
@@ -121,7 +121,7 @@ export const PipelineUI = () => {
                 snapGrid={[gridSize, gridSize]}
                 connectionLineType='smoothstep'
             >
-                <Background color="#1e293b" gap={gridSize} />
+                <Background color="#cbd5e1" gap={gridSize} />
                 <Controls />
                 <MiniMap />
             </ReactFlow>

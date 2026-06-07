@@ -8,8 +8,8 @@ export const useVariableDetection = (text) => {
   const variables = useMemo(() => {
     if (!text || typeof text !== 'string') return [];
     
-    // Regex to match {{variableName}} where variableName is a valid JS identifier
-    const regex = /\{\{([a-zA-Z_$][a-zA-Z0-9_$]*)\}\}/g;
+    // Regex to match {{ variableName }} where variableName is a valid JS identifier (with optional spacing)
+    const regex = /\{\{\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\}\}/g;
     const matches = [];
     const seen = new Set();
     

@@ -6,7 +6,7 @@ export const nodeConfigs = {
   customInput: {
     title: 'Input',
     description: 'Pipeline input',
-    icon: '↓',
+    icon: 'Download',
     inputs: [],
     outputs: [
       { id: 'value', label: 'Output' },
@@ -31,7 +31,7 @@ export const nodeConfigs = {
   customOutput: {
     title: 'Output',
     description: 'Pipeline output',
-    icon: '↑',
+    icon: 'Upload',
     inputs: [
       { id: 'value', label: 'Input' },
     ],
@@ -56,7 +56,7 @@ export const nodeConfigs = {
   llm: {
     title: 'LLM',
     description: 'Language model',
-    icon: '🤖',
+    icon: 'Brain',
     inputs: [
       { id: 'system', label: 'System' },
       { id: 'prompt', label: 'Prompt' },
@@ -84,7 +84,7 @@ export const nodeConfigs = {
   text: {
     title: 'Text',
     description: 'Static/dynamic text',
-    icon: '📝',
+    icon: 'FileText',
     inputs: [],
     outputs: [
       { id: 'output', label: 'Output' },
@@ -104,7 +104,7 @@ export const nodeConfigs = {
   api: {
     title: 'API Call',
     description: 'HTTP request',
-    icon: '🌐',
+    icon: 'Globe',
     inputs: [
       { id: 'trigger', label: 'Trigger' },
     ],
@@ -123,7 +123,7 @@ export const nodeConfigs = {
         name: 'url',
         label: 'URL',
         type: 'text',
-        value: 'https://api.example.com',
+        value: 'https://dummy.restapiexample.com/api/v1/employees',
       },
       {
         name: 'timeout',
@@ -137,7 +137,7 @@ export const nodeConfigs = {
   database: {
     title: 'Database',
     description: 'Query database',
-    icon: '🗄️',
+    icon: 'Database',
     inputs: [
       { id: 'trigger', label: 'Trigger' },
     ],
@@ -165,7 +165,7 @@ export const nodeConfigs = {
   delay: {
     title: 'Delay',
     description: 'Wait/sleep',
-    icon: '⏱️',
+    icon: 'Clock',
     inputs: [
       { id: 'trigger', label: 'Trigger' },
     ],
@@ -185,7 +185,7 @@ export const nodeConfigs = {
   filter: {
     title: 'Filter',
     description: 'Conditional logic',
-    icon: '🔍',
+    icon: 'Filter',
     inputs: [
       { id: 'input', label: 'Input' },
     ],
@@ -206,7 +206,7 @@ export const nodeConfigs = {
   email: {
     title: 'Email',
     description: 'Send email',
-    icon: '📧',
+    icon: 'Mail',
     inputs: [
       { id: 'trigger', label: 'Trigger' },
     ],
